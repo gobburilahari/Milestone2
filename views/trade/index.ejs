@@ -1,0 +1,28 @@
+<%-include('../partials/header.ejs')%>
+<div>
+  <%if(trades.length){%>
+    <h2 id = "select">Select an item</h2>
+    <%let setTrade = new Set();%> 
+    <%for(var i = 0; i<trades.length;i++){%>
+      <%setTrade.add(trades[i].category);%>
+      <%}%>
+      <%let catList = Array.from(setTrade);%>
+      <div>
+        <%for(var i = 0;i<catList.length;i++){%>
+          <div class="displayinline" style="margin-right:250px">
+           <h4><%= catList[i]%></h4>
+          <%for(var j=0;j<trades.length;j++){%>
+            <%if(trades[j].category === catList[i]){%>
+              <ul>
+                <li><a href="/trades/<%= trades[j].id%>"><p><%= trades[j].title %></p></a></li>
+              </ul>
+            <%}%>
+          <%}%>
+            </div>
+        <%}%>
+      <%}else{%>
+        <p>There are no products to display</p>
+      <%}%>
+      </div>
+</div>
+<%-include('../partials/footer.ejs')%>

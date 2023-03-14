@@ -1,0 +1,21 @@
+<%- include('../partials/header.ejs')%>
+
+
+<div class = "content">
+    <h4><%= trade.title%></h4>
+    <!-- <small>Posted <%= trade.createAt%> by <%= trade.author%></small> -->
+    <div id="trade">
+        <!-- <p>C</p> -->
+        <p>Category : <%= trade.category%></p>
+        <!-- <br> -->
+        <p>Details : <%= trade.details%></p>
+        <p>Status : <%= trade.status%></p>
+        <img alt="<%= trade.title%>" src="<%= trade.image%>" width="150" height="150" class="alignimage">
+        
+    </div>
+    <form >
+        <button formmethod="GET" formaction="/trades/<%= trade.id%>/edit" type="submit">EDIT</button>
+        <button formmethod="POST" formaction="/trades/<%= trade.id%>?_method=DELETE" type="submit">DELETE</button>
+    </form>
+</div>
+<%- include('../partials/footer.ejs')%>
